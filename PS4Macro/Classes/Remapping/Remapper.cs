@@ -304,8 +304,8 @@ namespace PS4Macro.Classes.Remapping
                     double makeupY = Math.Sign(MouseSpeedY) * MouseMakeupSpeed;
 
                     // Scale speed to analog values
-                    double rx = baseX + (makeupX * MouseSpeedX * MouseSpeedX * 127);
-                    double ry = baseY + (makeupY * MouseSpeedY * MouseSpeedY * 127);
+                    double rx = ((MouseSpeedX > 0) ? 142.65 : ((MouseSpeedX < 0) ? 113.25 : 128)) + (MouseSpeedX * 127);
+                    double ry = ((MouseSpeedY > 0) ? 142.65 : ((MouseSpeedY < 0) ? 113.25 : 128)) + (MouseSpeedY * 127);
 
                     byte scaledX = (byte)((rx < min) ? min : (rx > max) ? max : rx);
                     byte scaledY = (byte)((ry < min) ? min : (ry > max) ? max : ry);
